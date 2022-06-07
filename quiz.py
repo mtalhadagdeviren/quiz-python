@@ -27,17 +27,16 @@ class Quiz:
         
         answer= input('Answer: ')
         self.questionGuess(answer)
-        self.loadindexQuestion() 
+        self.loadQuestion() 
     
     def questionGuess(self,answer):
         question = self.getQuestion()
         if(question.checkAnswer(answer)):
             self.score +=20
         self.questionIndex +=1
-        self.displayQuestion()
     
-    def loadindexQuestion(self):
-        if(len(self.questions)==self.questionIndex):
+    def loadQuestion(self):
+        if len(self.questions)==self.questionIndex:
             self.showScore()
         else:
             self.progress()
@@ -49,7 +48,7 @@ class Quiz:
     def progress(self):
         totalQuestion = len(self.questions)
         questionNo = self.questionIndex + 1
-        if(questionNo>totalQuestion):
+        if(questionNo > totalQuestion):
             print('sınav bitti')
         else:
             print(f'Question {questionNo} of {totalQuestion}')
@@ -58,6 +57,7 @@ class Quiz:
 
 
 q1=Question('ABC',['1','2','3','4'],3)
-sorular=[q1]
+q2=Question('DEF',['1','2','3','4'],4)
+sorular=[q1,q2]
 quiz=Quiz(sorular)
-s1=quiz.displayQuestion()
+s1=quiz.loadQuestion()
